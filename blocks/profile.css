@@ -1,19 +1,29 @@
 .profile {
   display: flex;
   flex-direction: row;
-  width: 1280px;
-  height: 210px;
-  justify-content: center;
 }
 
 .profile__avatar {
 }
 
 .profile__column {
+  gap: 12px;
 }
 
 .profile__name {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
 }
 
 .profile__title {
+  margin: 0;
+}
+
+.profile_edit__button {
+}
+
+.profile_new_post__button {
+  margin-left: auto;
+  padding: 0;
 }
