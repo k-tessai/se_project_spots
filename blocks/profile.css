@@ -49,6 +49,7 @@
   margin-top: auto;
   margin-right: auto;
   color: #212121;
+  opacity: 0.7;
   background-color: transparent;
   border: none;
   padding: 0;
@@ -59,7 +60,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
 }
 
 .profile_new_post__button {
@@ -118,5 +118,6 @@
 
   .profile_new_post__button {
     margin: 0;
+    width: 288px;
   }
 }
