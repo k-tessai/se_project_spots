@@ -25,4 +25,4 @@ Figma is an easy to use tool that allows for designers and software engineers to
 ## Deployment
 
 This webpage is deployed to GitHub Pages
-Deployment Link:
+Deployment Link: https://k-tessai.github.io/se_project_spots
