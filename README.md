@@ -1,21 +1,18 @@
 # Project 3: Spots
 
-### Overview  
+### Overview
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+- Grid
+- Figma
+- Responsive
+
+**Grid**
+
+Spots shows the usefulness and readability of a grid. The grid display makes it easy to format all items to be the same and be functional on multiple screen sizes. Many websites utilize personal profiles that allow for the user to make it their own, this is the first step in learning how all the piece for a responsive and interactive design come alive.
+
+**Responsive**
+Using a responsive layout is of utmost importance for all the interfaces we have access to. Putting this into practice utilizing the media querues really helped me grasp and understand how it works.
+
+**Figma**
+
+Figma is an easy to use tool that allows for designers and software engineers to work together to see what the project should look like, down to the most minute details. It is able to show distance between objects, exact font-colors and opacity, and I am sure much more as this is just my first introduction.
