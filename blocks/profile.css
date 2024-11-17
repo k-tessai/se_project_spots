@@ -44,6 +44,10 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .profile_new_post__button {
@@ -59,6 +63,10 @@
   line-height: 1;
   width: 149px;
   height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 @media screen and (max-width: 627px) {
@@ -71,8 +79,8 @@
   }
 
   .profile__avatar {
-    width: 80;
-    height: 80;
+    width: 80px;
+    height: 80px;
     margin: 0 0 12px;
   }
 
