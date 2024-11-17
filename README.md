@@ -3,14 +3,15 @@
 ### Overview
 
 - Grid
-- Figma
 - Responsive
+- Figma
 
 **Grid**
 
 Spots shows the usefulness and readability of a grid. The grid display makes it easy to format all items to be the same and be functional on multiple screen sizes. Many websites utilize personal profiles that allow for the user to make it their own, this is the first step in learning how all the piece for a responsive and interactive design come alive.
 
 **Responsive**
+
 Using a responsive layout is of utmost importance for all the interfaces we have access to. Putting this into practice utilizing the media querues really helped me grasp and understand how it works.
 
 **Figma**
