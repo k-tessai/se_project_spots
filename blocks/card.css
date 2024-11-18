@@ -19,8 +19,11 @@
   height: 20px;
   border: none;
   background-color: transparent;
-  cursor: auto;
   cursor: pointer;
+}
+
+.card__like-button:hover {
+  background-image: url(../images/like\ icon\ dark.svg);
 }
 
 .card__title {

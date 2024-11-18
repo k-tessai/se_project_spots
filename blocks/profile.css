@@ -60,6 +60,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
+
+.profile_edit__button:hover {
+  opacity: 100%;
 }
 
 .profile_new_post__button {
@@ -79,6 +84,11 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+}
+
+.profile_new_post__button:hover {
+  opacity: 80%;
 }
 
 @media screen and (max-width: 627px) {
