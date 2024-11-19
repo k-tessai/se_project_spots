@@ -22,7 +22,10 @@ Using a responsive layout is of utmost importance for all the interfaces we have
 
 Figma is an easy to use tool that allows for designers and software engineers to work together to see what the project should look like, down to the most minute details. It is able to show distance between objects, exact font-colors and opacity, and I am sure much more as this is just my first introduction.
 
-## Deployment
+## Deployment & About Video
 
 This webpage is deployed to GitHub Pages
 [Deployment Link](https://k-tessai.github.io/se_project_spots)
+
+This link provides an overview of the project from the creator
+[About Video](https://drive.google.com/file/d/1tFDBo88pTFrMVRJmkLti6uBWMD1q4Miz/view?usp=drive_link)
