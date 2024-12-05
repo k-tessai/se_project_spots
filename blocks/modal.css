@@ -68,6 +68,7 @@
 .modal__input {
   border-color: rgba(33, 33, 33, 0.4);
   border-width: 1px;
+  border-radius: 8px;
   padding: 16px 12px;
   cursor: pointer;
   font-size: 20px;
