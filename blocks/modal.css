@@ -38,6 +38,8 @@
   color: #212121;
   opacity: 40%;
   cursor: pointer;
+  border-width: 0;
+  background-color: transparent;
 }
 
 .modal__close-button:hover {
@@ -83,6 +85,7 @@
   border-radius: 8px;
   background-color: #212121;
   color: #fcf5e5;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
