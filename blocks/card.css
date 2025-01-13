@@ -27,6 +27,16 @@
   opacity: 1;
 }
 
+.card__like-button_liked {
+  background-image: url(../images/redheart.svg);
+  opacity: 1;
+}
+
+.card__like-button_liked:hover {
+  background-image: url(../images/pinkheart.svg);
+  opacity: 1;
+}
+
 .card__title {
   margin: 0;
   color: #212121;

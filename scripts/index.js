@@ -41,7 +41,12 @@ const editModalDescriptionInput = editModal.querySelector(
 );
 
 const cardModal = document.querySelector("#add-card-modal");
+const addCardFormElement = cardModal.querySelector(".modal__form");
 const cardModalCloseButton = cardModal.querySelector(".modal__close-button");
+const cardModalLinkInput = cardModal.querySelector("#add-card-link-input");
+const cardModalCaptionInput = cardModal.querySelector(
+  "#add-card-caption-input"
+);
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
@@ -53,11 +58,21 @@ function getCardElement(data) {
 
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const cardLikeButton = cardElement.querySelector(".card__like-button");
+  //To do select delete button
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.link;
   console.log(cardImageEl);
+
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like-button_liked");
+  });
+
+  //set listener on delete button
+  //handler should remove the card from the DOM - sprint 4 basics of the DOM
+  //css styling trashcan
 
   return cardElement;
 }
@@ -75,6 +90,18 @@ function handleEditFormSubmit(evt) {
   profileName.textContent = editModalNameInput.value;
   profileDescription.textContent = editModalDescriptionInput.value;
   closeModal(editModal);
+}
+
+function handleCardFormSubmit(evt) {
+  evt.preventDefault();
+  const inputValues = {
+    name: cardModalCaptionInput.value,
+    link: cardModalLinkInput.value,
+  };
+  console.log(inputValues);
+  const cardElement = getCardElement(inputValues);
+  cardsList.prepend(cardElement);
+  closeModal(cardModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -96,6 +123,8 @@ cardModalCloseButton.addEventListener("click", () => {
 });
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
+
+addCardFormElement.addEventListener("submit", handleCardFormSubmit);
 
 initialCards.forEach((item) => {
   console.log(item);
