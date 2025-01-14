@@ -59,7 +59,7 @@ function getCardElement(data) {
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
-  //To do select delete button
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -70,9 +70,11 @@ function getCardElement(data) {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
 
-  //set listener on delete button
+  cardDeleteButton.addEventListener("click", (evt) => {
+    evt.target.closest(".card").remove();
+  });
+
   //handler should remove the card from the DOM - sprint 4 basics of the DOM
-  //css styling trashcan
 
   return cardElement;
 }
