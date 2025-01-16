@@ -22,6 +22,9 @@ const initialCards = [
   {
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
+
+    name: "Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
   },
 ];
 
@@ -48,6 +51,13 @@ const cardModalCaptionInput = cardModal.querySelector(
   "#add-card-caption-input"
 );
 
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+const previewModalCloseTypePreview = previewModal.querySelector(
+  ".modal__close_type_preview"
+);
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -70,21 +80,27 @@ function getCardElement(data) {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
 
+  cardImageEl.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalImageEl.src = data.link;
+    previewModalImageEl.alt = data.link;
+    previewModalCaptionEl.textContent = data.name;
+    console.log;
+  });
+
   cardDeleteButton.addEventListener("click", (evt) => {
     evt.target.closest(".card").remove();
   });
-
-  //handler should remove the card from the DOM - sprint 4 basics of the DOM
 
   return cardElement;
 }
 
 function openModal(modal) {
-  modal.classList.add("modal_opened");
+  modal.classList.add("modal__opened");
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal_opened");
+  modal.classList.remove("modal__opened");
 }
 
 function handleEditFormSubmit(evt) {
@@ -122,6 +138,10 @@ cardModalButton.addEventListener("click", () => {
 
 cardModalCloseButton.addEventListener("click", () => {
   closeModal(cardModal);
+});
+
+previewModalCloseTypePreview.addEventListener("click", () => {
+  closeModal(previewModal);
 });
 
 editFormElement.addEventListener("submit", handleEditFormSubmit);
