@@ -32,7 +32,7 @@
   font-family: Poppins, Arial, Helvetica, sans-serif;
 }
 
-.modal__container_preview {
+.modal__container-preview {
   padding: 0;
   max-width: 730px;
   width: 100%;
@@ -153,12 +153,13 @@
     padding: 12px;
   }
 
-  .modal__container_preview {
+  .modal__container-preview {
     padding: 0;
     max-width: 288px;
   }
 
   .modal__image {
+    max-width: 288px;
   }
 
   .modal__caption {
