@@ -34,13 +34,18 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonEl) => {
   //console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
-    buttonEl.disabled = true;
-    //TODO add a modifier class to the buttonEl to make it gray
-    //dont forget the CSS
+    disableButton(buttonEl);
   } else {
     buttonEl.disabled = false;
     //remove the disabled class
   }
+};
+
+const disableButton = (buttonEl) => {
+  buttonEl.disabled = true;
+
+  //TODO add a modifier class to the buttonEl to make it gray
+  //dont forget the CSS
 };
 
 const setEventListeners = (formEl) => {
