@@ -36,16 +36,20 @@ const toggleButtonState = (inputList, buttonEl) => {
   if (hasInvalidInput(inputList)) {
     disableButton(buttonEl);
   } else {
+    buttonEl.classList.remove("modal__submit-button-disabled");
     buttonEl.disabled = false;
-    //remove the disabled class
   }
 };
 
 const disableButton = (buttonEl) => {
   buttonEl.disabled = true;
+  buttonEl.classList.add("modal__submit-button-disabled");
+};
 
-  //TODO add a modifier class to the buttonEl to make it gray
-  //dont forget the CSS
+const resetValidation = (formEl, inputList) => {
+  inputList.forEach((input) => {
+    hideInputError(formEl, input);
+  });
 };
 
 const setEventListeners = (formEl) => {
