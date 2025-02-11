@@ -153,6 +153,20 @@ previewModalCloseTypePreview.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
+const modals = document.querySelectorAll(".modal");
+
+modals.forEach((modal) => {
+  modal.addEventListener("click", function (event) {
+    if (event.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+});
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
 addCardFormElement.addEventListener("submit", handleCardFormSubmit);
@@ -161,4 +175,11 @@ initialCards.forEach((item) => {
   console.log(item);
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
+  }
 });
