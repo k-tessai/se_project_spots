@@ -163,10 +163,6 @@ modals.forEach((modal) => {
   });
 });
 
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
 editFormElement.addEventListener("submit", handleEditFormSubmit);
 
 addCardFormElement.addEventListener("submit", handleCardFormSubmit);
