@@ -1,4 +1,3 @@
-//TO DO pass settings to the validation functions called in this file.
 import "./index.css";
 
 import {
@@ -6,6 +5,9 @@ import {
   enableValidation,
   settings,
 } from "../scripts/validation.js";
+
+import Api from "../scripts/Api.js";
+
 import { resetValidation } from "../scripts/validation.js";
 
 import logo from "../images/Logo.svg";
@@ -47,7 +49,24 @@ const initialCards = [
   },
 ];
 
-console.log(initialCards);
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "7bc7cf24-3d44-4e17-9c6c-7ed738e2f181",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getInitialCards().then((cards) => {
+  console.log(cards);
+  cards.forEach((item) => {
+    console.log(item);
+    const cardElement = getCardElement(item);
+    cardsList.prepend(cardElement);
+  });
+});
+
+//console.log(initialCards);
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const cardModalButton = document.querySelector(".profile__new-post-button");
@@ -195,10 +214,10 @@ editFormElement.addEventListener("submit", handleEditFormSubmit);
 
 addCardFormElement.addEventListener("submit", handleCardFormSubmit);
 
-initialCards.forEach((item) => {
-  console.log(item);
-  const cardElement = getCardElement(item);
-  cardsList.prepend(cardElement);
-});
+// initialCards.forEach((item) => {
+//   console.log(item);
+//   const cardElement = getCardElement(item);
+//   cardsList.prepend(cardElement);
+// });
 
 enableValidation(settings);
