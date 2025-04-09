@@ -1,4 +1,21 @@
 //TO DO pass settings to the validation functions called in this file.
+import "./index.css";
+
+import {
+  disableButton,
+  enableValidation,
+  settings,
+} from "../scripts/validation.js";
+import { resetValidation } from "../scripts/validation.js";
+
+import logo from "../images/Logo.svg";
+import avatar from "../images/avatar.jpg";
+
+const logoImage = document.getElementById("spots-logo");
+logoImage.src = logo;
+
+const avatarImage = document.getElementById("user-avatar");
+avatarImage.src = avatar;
 
 const initialCards = [
   {
@@ -183,3 +200,5 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.prepend(cardElement);
 });
+
+enableValidation(settings);
