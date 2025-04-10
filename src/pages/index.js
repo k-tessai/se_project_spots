@@ -6,7 +6,7 @@ import {
   settings,
 } from "../scripts/validation.js";
 
-import Api from "../scripts/Api.js";
+import Api from "../utils/Api.js";
 
 import { resetValidation } from "../scripts/validation.js";
 
@@ -57,14 +57,20 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  console.log(cards);
-  cards.forEach((item) => {
-    console.log(item);
-    const cardElement = getCardElement(item);
-    cardsList.prepend(cardElement);
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cards.forEach((item) => {
+      console.log(item);
+      const cardElement = getCardElement(item);
+      cardsList.prepend(cardElement);
+    });
+  })
+
+  .catch((err) => {
+    console.error(err);
   });
-});
 
 //console.log(initialCards);
 
