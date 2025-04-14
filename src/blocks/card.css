@@ -31,6 +31,42 @@
   opacity: 1;
 }
 
+.modal__title-delete {
+  font-size: 24px;
+}
+
+.modal__form-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.modal__submit-button-card {
+  margin: 0;
+  padding: 18 px, 32px;
+  border-radius: 8px;
+  border-style: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  width: 149px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.modal__submit-button-delete-card {
+  background-color: red;
+}
+
+.modal__submit-button-cancel-card {
+  background-color: white;
+}
+
 .card__content {
   display: flex;
   align-items: center;

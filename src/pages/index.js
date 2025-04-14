@@ -59,27 +59,30 @@ const api = new Api({
 
 api
   .getAppInfo()
-  //add getuserinfo to destructuring[]
-  .then(([cards]) => {
+  .then(([userInfo, cards]) => {
     cards.forEach((item) => {
       const cardElement = getCardElement(item);
       cardsList.prepend(cardElement);
     });
 
-    //handle the user's info
-    // set the src of avatar img
-    //set textContent of both text elements
+    profileName.textContent = userInfo.name;
+    profileDescription.textContent = userInfo.about;
+    avatarImage.src = userInfo.avatar;
   })
 
   .catch(console.error);
 
 //console.log(initialCards);
 
+// Profile
+
 const profileEditButton = document.querySelector(".profile__edit-button");
 const cardModalButton = document.querySelector(".profile__new-post-button");
 const avatarModalButton = document.querySelector(".profile__avatar-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__title");
+
+// Modal
 
 const editModal = document.querySelector("#edit-modal");
 const editFormElement = editModal.querySelector(".modal__form");
@@ -88,6 +91,8 @@ const editModalNameInput = editModal.querySelector("#profile-name-input");
 const editModalDescriptionInput = editModal.querySelector(
   "#profile-description-input"
 );
+
+// Cards
 
 const cardModal = document.querySelector("#add-card-modal");
 const addCardFormElement = cardModal.querySelector(".modal__form");
@@ -98,12 +103,16 @@ const cardModalCaptionInput = cardModal.querySelector(
   "#add-card-caption-input"
 );
 
+// Preview Modal
+
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
 const previewModalCloseTypePreview = previewModal.querySelector(
   ".modal__close-button_type_preview"
 );
+
+// Avatar Modal
 
 const avatarModal = document.querySelector("#avatar-modal");
 const addAvatarFormElement = avatarModal.querySelector(".modal__form");
@@ -117,10 +126,18 @@ const avatarModalLinkInput = avatarModal.querySelector(
 
 const avatarInput = document.querySelector("#profile-avatar-input");
 
+// Delete Modal
+
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
+
+// Card Elements
 
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+
+let selectedCard;
+let selectedCardId;
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -149,7 +166,9 @@ function getCardElement(data) {
     console.log;
   });
 
-  cardDeleteButton.addEventListener("click", handleDeleteCard);
+  cardDeleteButton.addEventListener("click", (evt) =>
+    handleDeleteCard(cardElement, data._id)
+  );
   //=> {evt.target.closest(".card").remove();
   //});
 
@@ -193,15 +212,19 @@ function handleEditFormSubmit(evt) {
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
-  const inputValues = {
-    name: cardModalCaptionInput.value,
-    link: cardModalLinkInput.value,
-  };
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-  evt.target.reset();
-  disableButton(cardSubmitBtn, settings);
-  closeModal(cardModal);
+  api
+    .createCard({
+      name: cardModalCaptionInput.value,
+      link: cardModalLinkInput.value,
+    })
+    .then((data) => {
+      const cardElement = getCardElement(data); // Use data from server response
+      cardsList.prepend(cardElement);
+      evt.target.reset();
+      disableButton(cardSubmitBtn, settings);
+      closeModal(cardModal);
+    })
+    .catch(console.error);
 }
 
 function handleAvatarSubmit(evt) {
@@ -217,8 +240,22 @@ function handleAvatarSubmit(evt) {
     .catch(console.error);
 }
 
-function handleDeleteCard(evt) {
-  //evt.preventDefault();
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  console.log("Selected Card ID before delete:", selectedCardId);
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModal);
+    })
+    .catch(console.error);
+}
+
+function handleDeleteCard(cardElement, cardId) {
+  console.log("Card ID in handleDeleteCard:", cardId);
+  selectedCard = cardElement;
+  selectedCardId = cardId;
   openModal(deleteModal);
 }
 
@@ -272,6 +309,8 @@ editFormElement.addEventListener("submit", handleEditFormSubmit);
 addCardFormElement.addEventListener("submit", handleCardFormSubmit);
 
 addAvatarFormElement.addEventListener("submit", handleAvatarSubmit);
+
+deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 // initialCards.forEach((item) => {
 //   console.log(item);

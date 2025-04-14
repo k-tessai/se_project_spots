@@ -157,6 +157,9 @@
   font-weight: 500;
 }
 
+.modal__delete {
+}
+
 .modal__submit-button {
   width: 156px;
   padding: 18px 0;
