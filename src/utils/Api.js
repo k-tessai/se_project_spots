@@ -67,6 +67,22 @@ class Api {
       Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  // editDeleteInfo() {
+  //   return fetch(`${this._baseUrl}/cards/cardsId/`, {
+  //     method: "DELETE",
+  //     headers: this._headers,
+  //     body: JSON.stringify({
+  //       avatar,
+  //     }),
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       return res.json();
+  //     }
+
+  //     Promise.reject(`Error: ${res.status}`);
+  //   });
+  // }
 }
 
 export default Api;

@@ -117,6 +117,8 @@ const avatarModalLinkInput = avatarModal.querySelector(
 
 const avatarInput = document.querySelector("#profile-avatar-input");
 
+const deleteModal = document.querySelector("#delete-modal");
+
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
@@ -147,9 +149,9 @@ function getCardElement(data) {
     console.log;
   });
 
-  cardDeleteButton.addEventListener("click", (evt) => {
-    evt.target.closest(".card").remove();
-  });
+  cardDeleteButton.addEventListener("click", handleDeleteCard);
+  //=> {evt.target.closest(".card").remove();
+  //});
 
   return cardElement;
 }
@@ -213,6 +215,11 @@ function handleAvatarSubmit(evt) {
       closeModal(avatarModal);
     })
     .catch(console.error);
+}
+
+function handleDeleteCard(evt) {
+  //evt.preventDefault();
+  openModal(deleteModal);
 }
 
 profileEditButton.addEventListener("click", () => {
