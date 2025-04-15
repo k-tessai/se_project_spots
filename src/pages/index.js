@@ -149,14 +149,26 @@ function getCardElement(data) {
   const cardLikeButton = cardElement.querySelector(".card__like-button");
   const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
+  if (data.isLiked) {
+    cardLikeButton.classList.add("card__like-button_liked");
+  }
+
   cardNameEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.link;
   console.log(cardImageEl);
 
-  cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-button_liked");
-  });
+  function handleLike(evt, id) {
+    const isLiked = evt.target.classList.contains("card__like-button_liked");
+    api
+      .changeLikes(id, isLiked)
+      .then(() => {
+        evt.target.classList.toggle("card__like-button_liked");
+      })
+      .catch(console.error);
+  }
+
+  cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
 
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -166,11 +178,9 @@ function getCardElement(data) {
     console.log;
   });
 
-  cardDeleteButton.addEventListener("click", (evt) =>
+  cardDeleteButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
   );
-  //=> {evt.target.closest(".card").remove();
-  //});
 
   return cardElement;
 }
