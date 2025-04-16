@@ -6,6 +6,9 @@ import {
   settings,
 } from "../scripts/validation.js";
 
+import { setButtonText } from "../utils/helper.js";
+import { deleteButtonText } from "../utils/helper.js";
+
 import Api from "../utils/Api.js";
 
 import { resetValidation } from "../scripts/validation.js";
@@ -130,6 +133,12 @@ const avatarInput = document.querySelector("#profile-avatar-input");
 
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteModalCloseButton = deleteModal.querySelector(
+  ".modal__close-button"
+);
+const deleteModalCancelButton = deleteModal.querySelector(
+  ".modal__submit-button-cancel-card"
+);
 
 // Card Elements
 
@@ -206,22 +215,32 @@ function closeModal(modal) {
 
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  const submitButton = evt.submitter;
+  setButtonText(submitButton, true);
+
   api
     .editUserInfo({
       name: editModalNameInput.value,
       about: editModalDescriptionInput.value,
     })
     .then((data) => {
-      //Todo use data argument instead of the input values
-      profileName.textContent = editModalNameInput.value;
-      profileDescription.textContent = editModalDescriptionInput.value;
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
       closeModal(editModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitButton, false);
+    });
 }
+
+//implement loading text for all other form submissions
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
+
+  const submitButton = evt.submitter;
+  setButtonText(submitButton, true);
   api
     .createCard({
       name: cardModalCaptionInput.value,
@@ -234,12 +253,17 @@ function handleCardFormSubmit(evt) {
       disableButton(cardSubmitBtn, settings);
       closeModal(cardModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitButton, false);
+    });
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   console.log(avatarInput.value);
+  const submitButton = evt.submitter;
+  setButtonText(submitButton, true);
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
@@ -247,19 +271,27 @@ function handleAvatarSubmit(evt) {
       avatarImage.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(submitButton, false);
+    });
 }
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   console.log("Selected Card ID before delete:", selectedCardId);
+  const submitButton = evt.submitter;
+  deleteButtonText(submitButton, true);
   api
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      deleteButtonText(submitButton, false);
+    });
 }
 
 function handleDeleteCard(cardElement, cardId) {
@@ -302,6 +334,14 @@ avatarModalButton.addEventListener("click", () => {
 
 avatarModalCloseButton.addEventListener("click", () => {
   closeModal(avatarModal);
+});
+
+deleteModalCloseButton.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+deleteModalCancelButton.addEventListener("click", () => {
+  closeModal(deleteModal);
 });
 
 const modals = document.querySelectorAll(".modal");
