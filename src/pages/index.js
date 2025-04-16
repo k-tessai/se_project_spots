@@ -134,7 +134,7 @@ const avatarInput = document.querySelector("#profile-avatar-input");
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteModalCloseButton = deleteModal.querySelector(
-  ".modal__close-button"
+  ".modal__close-button, .modal__close-button_type_delete_preview"
 );
 const deleteModalCancelButton = deleteModal.querySelector(
   ".modal__submit-button-cancel-card"

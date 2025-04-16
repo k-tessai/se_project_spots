@@ -150,6 +150,11 @@
     width: 80px;
     height: 80px;
     margin: 0 0 12px;
+    justify-content: center;
+  }
+
+  .profile__avatar-container {
+    margin: 0;
   }
 
   .profile__pencil-icon {
