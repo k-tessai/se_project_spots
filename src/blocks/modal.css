@@ -163,13 +163,20 @@
 
 .modal__close-button_type_delete_preview {
   position: absolute;
-  right: 3px;
-  top: -40px;
+  right: -50px;
+  top: 0px;
   width: 40px;
   height: 40px;
   border-width: 0;
   background-color: transparent;
+  background-image: url(../images/imgcloseicon.svg);
+  opacity: 1;
   cursor: pointer;
+}
+
+.modal__close-button_type_delete_preview:hover {
+  color: #212121;
+  opacity: 0.4;
 }
 
 .modal__title-delete {
@@ -288,6 +295,11 @@
   .modal__close-button_type_preview {
     top: -40px;
     left: 255px;
+  }
+
+  .modal__close-button_type_delete_preview {
+    right: 3px;
+    top: -40px;
   }
 
   .modal__title {
