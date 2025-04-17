@@ -12,7 +12,7 @@ Spots is a site that allows for users to share their favorite photos. An avatar 
 
 **Grid**
 
-Spots shows the usefulness and readability of a grid. The grid display makes it easy to format all items to be the same and be functional on multiple screen sizes. Many websites utilize personal profiles that allow for the user to make it their own, this is the first step in learning how all the piece for a responsive and interactive design come alive.
+Spots shows the usefulness and readability of a grid. The grid display makes it easy to format all items to be the same and be functional on multiple screen sizes. Many websites utilize personal profiles that allow for the user to make it their own, this is the first step in learning how all the pieces for a responsive and interactive design come alive.
 
 **Responsive Design**
 
